@@ -19,3 +19,6 @@ usage:
 `terraform init`
 
 `terraform apply`
+
+
+Be sure to run `terraform destroy` when done
