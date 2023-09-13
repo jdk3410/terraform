@@ -1,4 +1,13 @@
-# Creates a VPC and relevant security groups, an EC2 instance, installs Apache on it, and creates a hello world page
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
 
 provider "aws" {
   region = var.region
