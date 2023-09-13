@@ -6,7 +6,10 @@ terraform-aws-ec2: Creates an EC2 instance and a new VPC, and adds your SSH keys
 
 usage:
 
-` git clone https://github.com/jdk3410/terraform.git
+`git clone https://github.com/jdk3410/terraform.git`
 
+`cd terraform/*`
 
-``
+`terraform init`
+
+`terraform apply`
