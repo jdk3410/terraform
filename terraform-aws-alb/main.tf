@@ -44,11 +44,11 @@ resource "aws_launch_configuration" "terraform" {
 resource "aws_autoscaling_group" "terraform" {
   launch_configuration = aws_launch_configuration.terraform.name
   vpc_zone_identifier  = data.aws_subnets.default.ids
-  target_group_arns = [aws_lb_target_group.asg.arn]
-  health_check_type = "ELB"
+  target_group_arns    = [aws_lb_target_group.asg.arn]
+  health_check_type    = "ELB"
 
-  min_size             = 2
-  max_size             = 10
+  min_size = 2
+  max_size = 10
 
   tag {
     key                 = "Name"
@@ -129,7 +129,7 @@ resource "aws_security_group" "instance" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
- egress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
