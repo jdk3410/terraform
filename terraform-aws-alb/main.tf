@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "terraform" {
 }
 
 resource "aws_lb" "terraform" {
-  name               = "terraform-asg"
+  name               = "${var.name}-lb"
   load_balancer_type = "application"
   subnets            = data.aws_subnets.default.ids
   security_groups    = [aws_security_group.alb.id]
@@ -82,7 +82,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_lb_target_group" "asg" {
-  name     = "terraform-asg"
+  name     = "${var.name}-asg"
   port     = var.server_port
   protocol = "HTTP"
   vpc_id   = data.aws_vpc.default.id
@@ -116,7 +116,7 @@ resource "aws_lb_listener_rule" "asg" {
 
 
 resource "aws_security_group" "instance" {
-  name = "terraform"
+  name = "${var.name}"
   ingress {
     from_port   = var.server_port
     to_port     = var.server_port
@@ -138,7 +138,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_security_group" "alb" {
-  name = "terraform-alb"
+  name = "${var.name}-alb"
   # Allow inbound HTTP requests
   ingress {
     from_port   = 80
